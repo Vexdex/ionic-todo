@@ -1,6 +1,8 @@
 {
   "name": "ionic-todo",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "pro_id": "abd51d82"
 }
