@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AddItemPage } from '../pages/add-item/add-item';
 import { DetailsItemPage } from '../pages/details-item/details-item';
+import { EditItemPage } from '../pages/edit-item/edit-item';
 import { DataProvider } from '../providers/data/data';
 
 
@@ -17,7 +18,8 @@ import { DataProvider } from '../providers/data/data';
     MyApp,
     HomePage,
     AddItemPage,
-    DetailsItemPage
+    DetailsItemPage,
+    EditItemPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { DataProvider } from '../providers/data/data';
     MyApp,
     HomePage,
     AddItemPage,
-    DetailsItemPage
+    DetailsItemPage,
+    EditItemPage
   ],
   providers: [
     StatusBar,

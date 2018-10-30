@@ -14,11 +14,13 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 })
 export class AddItemPage {
   public myTitle = 'Add Item';
-
+  
   title: string;
-  description: string;
+  description: string;  
  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view:ViewController) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public view: ViewController) {
   }
 
   ionViewDidLoad() {
@@ -30,9 +32,7 @@ export class AddItemPage {
       title: this.title,
       description: this.description
     }
-
     this.view.dismiss(newItem);
-
   }
 
   close() {
