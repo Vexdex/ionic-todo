@@ -1,38 +1,30 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
-
-/**
- * Generated class for the AddItemPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-add-item',
   templateUrl: 'add-item.html',
 })
+
 export class AddItemPage {
-  public myTitle = 'Add Item';
+  public myTitle = 'Add';
   
   title: string;
   description: string;  
+  complete: boolean = false;  
  
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams, 
-              public view: ViewController) {
+  constructor(public view: ViewController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddItemPage');
-  }
+  ionViewDidLoad() {}
 
   saveItem() {
-    let newItem = {
+    let item = {
       title: this.title,
-      description: this.description
+      description: this.description,
+      complete: this.complete
     }
-    this.view.dismiss(newItem);
+    this.view.dismiss(item);
   }
 
   close() {

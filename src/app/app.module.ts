@@ -12,6 +12,9 @@ import { DetailsItemPage } from '../pages/details-item/details-item';
 import { EditItemPage } from '../pages/edit-item/edit-item';
 import { DataProvider } from '../providers/data/data';
 
+import { TabPage } from '../pages/tab/tab';
+import { TaskPage } from '../pages/task/task';
+import { CategoryPage } from '../pages/category/category';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { DataProvider } from '../providers/data/data';
     HomePage,
     AddItemPage,
     DetailsItemPage,
-    EditItemPage
+    EditItemPage,
+    TabPage,
+    TaskPage,
+    CategoryPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,10 @@ import { DataProvider } from '../providers/data/data';
     HomePage,
     AddItemPage,
     DetailsItemPage,
-    EditItemPage
+    EditItemPage,
+    TabPage,
+    TaskPage,
+    CategoryPage
   ],
   providers: [
     StatusBar,

@@ -1,39 +1,40 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import { AddItemPage } from '../add-item/add-item';
 import { DetailsItemPage } from '../details-item/details-item';
 
 import { DataProvider } from '../../providers/data/data';
- 
+
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-task',
+  templateUrl: 'task.html',
 })
 
-export class HomePage {
- 
-  public items = [];
-  public myTitle = 'Todo tasks';
+export class TaskPage {
+
+  public items = [];  
   public amountTasks: number;
+  public myTitle = 'tasks';
 
   constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
               public modalCtrl: ModalController,
               public alertCtrl: AlertController,
-              public dataService: DataProvider) { 
-    
-    // primary load data            
+              public dataService: DataProvider ) { 
+
+             // primary load data            
     this.dataService.getData().then((data) => {
       if(data){
         this.items = data;
       }  
       this.amountTasks = this.items.length;
-    });  
+    });     
   }
- 
-  ionViewDidLoad(){}
-  
+
+  ionViewDidLoad() { }
+
   addItem(){ 
     let addModal = this.modalCtrl.create(AddItemPage); 
     addModal.onDidDismiss((item) => { 

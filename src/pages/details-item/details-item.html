@@ -1,30 +1,38 @@
-<!--
-  Generated template for the DetailsItemPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar color="secondary">
-    <ion-title>
+  <ion-navbar  color="info">
+    <ion-title>      
       {{myTitle}}
     </ion-title>
-    <ion-title>       
-        {{title}}
-        <ion-buttons end>
-            <button ion-button icon-only (click)="editItem(item)">
-              <ion-icon name="md-create"></ion-icon>
-            </button>
-        </ion-buttons>        
-    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="confirmDeleteItem(item)">
+        <ion-icon name="remove-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="editItem()">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
- 
+
+
 <ion-content>
   <ion-card>
     <ion-card-content>
-      {{id}} 
-      {{description}}
+      <ion-item>  
+          {{id}} 
+      </ion-item>  
+      <ion-item>  
+          {{title}}
+      </ion-item>  
+      <ion-item>  
+        <p>{{description}}</p>     
+      </ion-item>  
+      <ion-item>      
+        <ion-checkbox [(ngModel)]="complete" disabled></ion-checkbox>
+        <ion-label>Complete</ion-label>          
+      </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>

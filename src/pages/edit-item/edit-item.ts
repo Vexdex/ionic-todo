@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
 import { DataProvider } from '../../providers/data/data';
 
 @Component({
@@ -9,41 +10,42 @@ import { DataProvider } from '../../providers/data/data';
 
 export class EditItemPage {
 
-  public myTitle = 'Edit Item';
+  public myTitle = 'Edit';
 
+  id: number;
   title: string;
   description: string; 
+  complete: boolean; 
 
   item: any; 
 
   constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              public view:ViewController,
+              public navParams: NavParams,              
               public dataService: DataProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad load');
-
+  ionViewDidLoad() {  
+    this.id =  this.navParams.get('item').id;
     this.title =  this.navParams.get('item').title;
-    this.description = this.navParams.get('item').description;
-
-    this.item = {
-      title: this.navParams.get('item').title,
-      description: this.navParams.get('item').description
-    }
-
-    console.log('ionViewDidLoad item', this.item);
+    this.description = this.navParams.get('item').description;  
+    this.complete = this.navParams.get('item').complete;  
   }
 
-  saveItem() {
-/*    let editedItem = {
+  saveItem() {    
+    this.dataService.updateItemById(this.id, {
+      id: this.id,
       title: this.title,
-      description: this.description
-    }
-    this.dataService.update(editedItem);
-  */
-   
+      description: this.description,
+      complete: this.complete
+    });
+    
+    // go to Previous screen   
+    this.navCtrl.pop();
+  }
+
+  close() {
+    // go to Previous screen   
+    this.navCtrl.pop();
   }
 
 }

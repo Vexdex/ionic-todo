@@ -41,6 +41,10 @@
         <ion-input type="text" [(ngModel)]="description"></ion-input>
       </ion-item>
    
+      <ion-item>
+          <ion-label floating>Complete</ion-label>          
+          <ion-checkbox [(ngModel)]="complete"></ion-checkbox>
+        </ion-item>
     </ion-list>
    
     <button full ion-button color="primary" (click)="saveItem()">Save</button>
