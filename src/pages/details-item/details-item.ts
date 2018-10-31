@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController, NavController, NavParams } from 'ionic-angular';
 import { DataProvider } from '../../providers/data/data';
 import { AlertController } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 import { EditItemPage } from '../edit-item/edit-item';
 
@@ -23,7 +24,8 @@ export class DetailsItemPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public alertCtrl: AlertController,
+    public alertCtrl: AlertController, 
+    public events: Events,
     public dataService: DataProvider
     ) {
   }
@@ -50,6 +52,7 @@ export class DetailsItemPage {
 
   deleteItem(item) {  
     this.dataService.deleteItemById(item.id);
+    this.events.publish('task:deleted', item.id, Date.now());
     // go to Previous screen   
     this.navCtrl.pop();
   }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 import { AddItemPage } from '../add-item/add-item';
 import { DetailsItemPage } from '../details-item/details-item';
@@ -22,6 +23,7 @@ export class TaskPage {
               public navParams: NavParams, 
               public modalCtrl: ModalController,
               public alertCtrl: AlertController,
+              public events: Events,
               public dataService: DataProvider ) { 
 
              // primary load data            
@@ -31,6 +33,12 @@ export class TaskPage {
       }  
       this.amountTasks = this.items.length;
     });     
+
+    events.subscribe('task:deleted', (id, time) => {            
+      this.items = this.items.filter(item => item.id !== parseInt(id));
+      this.amountTasks = this.items.length;
+    });
+
   }
 
   ionViewDidLoad() { }
@@ -39,7 +47,7 @@ export class TaskPage {
     let addModal = this.modalCtrl.create(AddItemPage); 
     addModal.onDidDismiss((item) => { 
           if(item){
-            this.saveItem(item);
+            this.saveItem(item);           
           } 
     }); 
     addModal.present(); 
@@ -55,6 +63,7 @@ export class TaskPage {
     
     this.items.push(item);    
     this.dataService.save(this.items);
+    this.events.publish('task:added', this.items.length, Date.now());
   }
  
   deleteAllItems(){

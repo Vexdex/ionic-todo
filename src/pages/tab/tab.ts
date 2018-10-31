@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Events } from 'ionic-angular';
 
 import { TaskPage } from '../task/task';
 import { CategoryPage } from '../category/category';
@@ -20,6 +21,7 @@ export class TabPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
+              public events: Events,
               public dataService: DataProvider ) {    
 
     this.task = TaskPage;  
@@ -32,6 +34,17 @@ export class TabPage {
       }  
       this.amountTasks = this.items.length;
     });       
+
+    events.subscribe('task:added', (itemsLength, time) => {      
+      console.log('addedd task, length items is ', itemsLength, 'at', time);
+      this.amountTasks = itemsLength;
+    });
+
+    events.subscribe('task:deleted', (id, time) => {      
+      console.log('deleted task, length items is ', this.amountTasks - 1, 'at', time);
+      --this.amountTasks;
+    });
+    
   }
 
   ionViewDidLoad() { }
