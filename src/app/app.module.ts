@@ -15,6 +15,9 @@ import { DataProvider } from '../providers/data/data';
 import { TabPage } from '../pages/tab/tab';
 import { TaskPage } from '../pages/task/task';
 import { CategoryPage } from '../pages/category/category';
+import { DetailsCatPage } from '../pages/details-cat/details-cat';
+
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,14 @@ import { CategoryPage } from '../pages/category/category';
     EditItemPage,
     TabPage,
     TaskPage,
-    CategoryPage
+    CategoryPage,
+    DetailsCatPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +44,8 @@ import { CategoryPage } from '../pages/category/category';
     EditItemPage,
     TabPage,
     TaskPage,
-    CategoryPage
+    CategoryPage,
+    DetailsCatPage
   ],
   providers: [
     StatusBar,

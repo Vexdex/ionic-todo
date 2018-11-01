@@ -6,13 +6,32 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>category</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>      
+        {{myTitle}}
+      </ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="addCat()">
+            <ion-icon name="add-circle"></ion-icon>
+          </button>
+        </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+    <ion-list>      
+      <ion-item *ngFor="let cat of cats" (click)="getDetails(cat)">                                            
+        <span >{{cat.id}} {{cat.title}}</span>                  
+        <ion-badge item-end *ngIf="cat.tasks.length !== 0">{{cat.tasks.length}}</ion-badge>
+      </ion-item>   
+    </ion-list>
+    <form [formGroup]="category" (ngSubmit)="logForm()" *ngIf="showForm" >
+      <ion-item>
+        <ion-label>title</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item></ion-item>       
+      <button ion-button type="submit" [disabled]="!category.valid">Submit</button>
+    </form>
 </ion-content>
+

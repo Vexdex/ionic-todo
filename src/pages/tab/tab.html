@@ -4,9 +4,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding>   
+    <!-- <google-map apiKey="AIzaSyAyDAxXfEbG7h3gqmH71ISMynk-e8ZOP9U"></google-map> -->
+    
     <ion-tabs>    
         <ion-tab tabTitle="task" [root]="task" tabBadge="{{amountTasks}}" tabBadgeStyle="danger"></ion-tab>
-        <ion-tab tabTitle="category" [root]="category"></ion-tab>
+        <ion-tab tabTitle="category" [root]="category" tabBadge="{{amountCats}}" tabBadgeStyle="info" ></ion-tab>
     </ion-tabs>
+    
 </ion-content>
+
+<ion-footer>
+    <button ion-button color="light" full (click)="testMarker()">Test Marker</button>
+</ion-footer>
+

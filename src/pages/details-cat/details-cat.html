@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar  color="primary">
+    <ion-title>      
+      {{myTitle}}
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="addTask()">
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="confirmDeleteCat()">
+        <ion-icon name="remove-circle"></ion-icon>
+      </button>
+    </ion-buttons>          
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>      
+      <ion-item *ngFor="let task of tasks">                                    
+          <ion-label >
+                <span >{{task.id}} {{task.title}}</span>                
+          </ion-label>
+          <ion-checkbox [(checked)]="task.complete"></ion-checkbox>
+          <button ion-button icon-only item-end>
+              <ion-icon name="list" light></ion-icon>
+            </button>
+      </ion-item>   
+    </ion-list>
+
+    <form [formGroup]="task" (ngSubmit)="saveForm()" *ngIf="showForm" >
+      <ion-item>
+        <ion-label>title</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>description</ion-label>
+        <ion-input type="text" formControlName="description"></ion-input>
+      </ion-item>        
+      <button ion-button type="submit" [disabled]="!task.valid">Submit</button>
+    </form>
+</ion-content>
